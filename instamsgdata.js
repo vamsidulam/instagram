@@ -247,7 +247,7 @@ export const notedata=[
         song:'insta website pics/kingdombgm.mp3'
     },
     {
-        note_img:'insta website pics/AA-2.jpg',
+        note_img:'insta website pics/ntr.jpg',
         note_name:'Sethupathi',
         note_song:'Vikram',
         note_singer_name:'ANIRUDH',
@@ -308,7 +308,7 @@ export const posts_data=[
         note_desc:'jhanvi'
     },
     {
-        note_img:'insta website pics/AA-2.jpg',
+        note_img:'insta website pics/ntr.jpg',
         note_name:'Stylish Star',
         note_desc:'fireuu'
     },
