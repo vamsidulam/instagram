@@ -288,7 +288,7 @@ export const posts_data=[
         note_desc:'🌞🐿'
     },
     {
-        note_img:'insta website pics/aa-2.jpg',
+        note_img:'insta website pics/ntr.jpg',
         note_name:'iconstar',
         note_desc:'🥰😽'
     },
