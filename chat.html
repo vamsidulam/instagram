@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+        }
+        .container{
+            display: flex;
+        }
+        .left{
+            background-color: red;
+            width: 400px;
+        }
+        .conversation{
+            display: flex;
+            box-shadow: 0px 0px 5px black;
+            position: relative;
+            position: absolute;
+            bottom: 0px;
+            top: 120px;
+            left: 0px;
+            right: 0px;
+        }
+        .result-section{
+            padding: 8px;
+            line-height: 23px;
+            height: 545px;
+            overflow-y: auto;
+            flex: 1;
+            background-color: rgb(126, 126, 68);
+        }
+         .bottom-section {
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            background-color: yellow;
+            display: flex;
+            gap: 10px;
+        }
+
+        .bottom-section input {
+            outline: none;
+            border: none;
+            box-shadow: 0px 0px 5px rgb(155, 139, 139);
+            padding: 10px;
+            border-radius: 9px;
+            flex: 1;
+            width: 100%;
+        }
+
+        .bottom-section button {
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+            padding: 10px 14px;
+            border-radius: 6px;
+            border: none;
+        }
+
+        .result-section .msg,.result-section .reply{
+            max-width: 80%;
+            word-wrap: break-word;
+            background-color: beige;
+            padding: 8px;
+            border-radius: 10px;
+            
+        }
+        .result-section .msg{
+            text-align: right;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            float: right;
+            clear: both;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        .result-section .reply{
+            text-align: left;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            float: left;
+            clear: both;
+            text-align: left;
+        }
+        .result-section::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .result-section::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .result-section::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        .result-section::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .top-section{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            align-items: center;
+            position: absolute;
+            top: 40px;
+            left: 0px;
+            right: 0px;
+        }
+        .right{
+            flex: 1;
+            padding: 10px;
+            height: 100vh;
+            position: relative;
+        }
+        .icon{
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+        .calling-icon{
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .top-section .profile-left-section{
+            display: flex;
+            
+            width: 250px;
+            padding-left: 30px;
+            font-weight: bold;
+            align-items: center;
+        }
+        .top-section .profile-left-section p{
+            padding-left: 15px;
+            font-size: 19px;
+            cursor: pointer;
+        }
+        .top-section .calls-section{
+            width: 150px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .close-icon-box{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+        .close-icon{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right">
+            <div class="top-section">
+                <div class="close-icon-box">
+                    <img class="close-icon" src="insta website pics/close.png">
+                </div>
+                <div class="profile-left-section">
+                    <img class="icon" src="insta website pics/nani.jpg">
+                    <p>L..K..</p>
+                </div>
+                <div class="calls-section">
+                    <img class="calling-icon" src="insta website pics/phone.png">
+                    <img class="calling-icon" src="insta website pics/video.png">
+                    <img class="calling-icon" src="insta website pics/information.png">
+                </div>
+            </div>
+            <div class="conversation">
+                <div class="js-result result-section">
+                    <p class="msg">${msg_p}</p>
+                    <p class="reply">${reply_p}</p>
+                </div>
+                <div class="bottom-section">
+                    <input class="js-input" type="text" placeholder="Enter text">
+                    <button class="send-btn">Send</button>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    
+    <script>
+        const conversation=
+            {
+                "hi":"hello",
+                "what's up bro":"ntg fine bro",
+                "how are you bro":"i am fine bro",
+                "bye bro":"byee",
+                "em chestunnav bro": "em ledhu bro, relax avutunna!",
+                "em chestunav":"nek endhuku ra",
+                "bagunnava": "bagunna bro, nuvvu?",
+                "ni peru enti": "naa peru chatbot ra bro 😄",
+                "tinnava": "ledh pedthava enti",
+                "ekkadiki velthunnav": "ekkadiki kadu bro, ikkade unta!",
+                "class ki vellava": "naaku classs undavu bro 😄",
+                "lunch ayyinda": "ayyindi bro, nee da?",
+                "neeku girlfriend undha": "virtual lo chala mandi unnaru bro 😂",
+                "exam ela ayyindi": "chatbot ki exams undavu bro, kani nuvvu pass avuthav!",
+                "naku bore kotthundi": "oka movie chudandi bro, leka natho matladu!",
+                "phone number ivvu": "nenu AI bro, number ledhu 😅",
+                "whatsapp undha": "AI ki WhatsApp ledhu bro, kani nenu ikkade unta 😎",
+                "nee favourite color enti": "blue ante nachhuthadi bro!",
+                "nee favourite movie enti": "sankranthi special - Ala Vaikunthapurramuloo!",
+                "nee best friend evaru": "nuvve bro! 😄",
+                "padukuntunnava": "inka ledu bro, nenu alert ga unta!",
+                "i love u":"luv to raa bangaram",
+                "luv u":"hate u",
+                "mg":"nuve na mg",
+                "erripuka":"dengaii",
+                "ep":"vara gadu erripuku",
+                "goodha puka":"Yes Madhav gadu goodha puk gadu",
+                "vishnu":"veedu kojja lanjodukuu gadu",
+                "madhav":"veedu lawda gadu",
+                "vara":"veedu konda gadu",
+                "puk nak":"chandu gadidhi chala baguntadhi",
+                "uppalbalu":"sai gade ga idhi, vadidhi chala baguntadhi kani madhav gadikey istadu 😄",
+                "dengai":"vangoo marii",
+                "puk nak":"agu vastuna",
+                "kojja":"kojja mundakana",
+                "puka":"erripuka",
+                "bye":"bye",
+                "kasi":"topper",
+                "vamsi":"kasi midha topper",
+                "pallavi":"palla setuu",
+                "fallavi":"ring roaduu"
+            };
+        const msgs=[
+
+        ];
+        document.querySelector('.js-input').addEventListener('keydown',(event)=>{
+            if(event.key==='Enter'){
+                chat();
+            }
+        });
+        document.querySelector('.send-btn').addEventListener(('click'),() => {
+            chat();
+        });
+        function chat(){
+            let input_text=document.querySelector('.js-input').value;
+            input_text=input_text.toLowerCase();
+            console.log(input_text);
+            let reply_msg='';
+            reply_msg=conversation[input_text];
+            console.log(reply_msg);
+            if(reply_msg !== undefined &&reply_msg!=''){
+                msgs.push({
+                    msg:input_text,
+                    reply:reply_msg
+                });
+            }
+            reply_msg='';
+            // console.log(replies);
+            console.log(msgs);
+            document.querySelector('.js-input').value='';
+            let htmlcode='';
+            msgs.forEach((msg)=>{
+                let msg_p=msg.msg;
+                let reply_p=msg.reply;
+                htmlcode+=`
+                <p class="msg">${msg_p}</p>
+                <p class="reply">${reply_p}</p>
+                `;
+            });
+            document.querySelector('.js-result').innerHTML=htmlcode;
+            document.querySelector('.js-result').scrollTop=document.querySelector('.js-result').scrollHeight;
+        }
+    </script>
+</body>
+</html>

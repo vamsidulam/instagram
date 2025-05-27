@@ -1,0 +1,48 @@
+export const conversation=
+{
+    "hi":"hello",
+    "what's up bro":"ntg fine bro",
+    "how are you bro":"i am fine bro",
+    "bye bro":"byee",
+    "em chestunav bro": "em ledhu bro, relax avutunna!",
+    "em chestunav":"nek endhuku ra",
+    "bagunnava": "bagunna bro, nuvvu?",
+    "ni peru enti": "naa peru chatbot ra bro 😄",
+    "tinnava": "ledh pedthava enti",
+    "ekkadiki velthunnav": "ekkadiki kadu bro, ikkade unta!",
+    "class ki vellava": "naaku classs undavu bro 😄",
+    "lunch ayyinda": "ayyindi bro, nee da?",
+    "neeku girlfriend undha": "virtual lo chala mandi unnaru bro 😂",
+    "exam ela rasav": "chatbot ki exams undavu bro, kani nuvvu pass avuthav!",
+    "naku bore kodtundhi": "oka movie chudandi bro, leka natho matladu!",
+    "phone number ivvu": "nenu AI bro, number ledhu 😅",
+    "whatsapp undha": "AI ki WhatsApp ledhu bro, kani nenu ikkade unta 😎",
+    "ni favourite color enti": "blue ante nachhuthadi bro!",
+    "ni favourite movie enti": "sankranthi special - Ala Vaikunthapurramuloo!",
+    "ni best friend evaru": "nuvve bro! 😄",
+    "padukuntunava": "inka ledu bro, nenu alert ga unta!",
+    "i love u":"luv to raa bangaram",
+    "luv u":"hate u",
+    "mg":"nuve na mg",
+    "erripuka":"dengaii",
+    "ep":"vara gadu erripuku",
+    "goodha puka":"Yes Madhav gadu goodha puk gadu",
+    "vishnu":"veedu kojja lanjodukuu gadu",
+    "madhav":"veedu lawda gadu",
+    "vara":"veedu konda gadu",
+    "puk nak":"chandu gadidhi chala baguntadhi",
+    "uppalbalu":"sai gade ga idhi, vadidhi chala baguntadhi kani madhav gadikey istadu 😄",
+    "dengai":"vangoo marii",
+    "puk nak":"agu vastuna",
+    "kojja":"kojja mundakana",
+    "puka":"erripuka",
+    "bye":"bye",
+    "kasi":"topper",
+    "vamsi":"kasi midha topper",
+    "pallavi":"palla setuu",
+    "fallavi":"ring roaduu"
+};
+
+export const msgs=[
+
+];

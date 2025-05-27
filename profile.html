@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+        }
+        .page{
+            display: flex;
+        }
+        .leftsidebar{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 200px;
+            border-right: 1px solid gray;
+            height: 100vh;
+            padding-left: 16px;
+            font-size: 20px;
+            
+        }
+        .leftsidebar p{
+            padding-left: 8px;
+        }
+        .logos{
+            width: 25px;
+            height: 25px;
+            transition: width 0.15s,height 0.15s;
+        }
+        .logobox{
+            display: flex;
+            border-radius: 20px;
+            transition: background-color 0.15s;
+            align-items: center;
+            
+        }
+        .logobox img,.logobox p{
+            cursor: pointer;
+        }
+        .logos-dp{
+            width: 30px;
+            height: 30px;
+            border-radius: 30px;
+            object-fit: contain;
+            
+        }
+        .topsection{
+            height: 40px;
+            display: flex;
+            justify-content: left;
+            
+        }
+        .middlesection{
+            height: 430px;
+            display: flex;
+            justify-content: space-between;
+            align-items:left;
+        }
+        .bottomsection{
+            display: flex;
+            justify-content: space-between;
+            align-items: left;
+            height: 120px;
+            margin-top: 30px;
+            
+        }
+        .middlesection,.bottomsection{
+            display: flex;
+            flex-direction: column;
+        }
+        .rightsidebar{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            overflow-y: auto;
+            position: relative;
+        }
+
+         .rightsidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .rightsidebar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .rightsidebar::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        .rightsidebar::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .profile-hightlights-section{
+            position: absolute;
+            top: 0px;
+            
+        }
+        .profile-section{
+            display: flex;
+            width: 600px;
+            justify-content: space-around;
+            align-items: center;
+            padding: 30px 0px;
+            
+        }
+        .profile-section .profile{
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            
+        }
+        .profile-section .profile .dp{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 160px;
+        }
+        .profile-section .details-section{
+            display: flex;
+            flex-direction: column;
+            margin-left: -80px;
+
+        }
+        .profile-section  .details-section .top{
+            display: flex;
+            padding-top: 10px;
+            justify-content: space-around;
+            align-items: center;
+            margin-left: -5px;
+            width: 320px;
+        }
+        .profile-section  .details-section .top p{
+            margin-top: 0px;
+            margin-bottom: 0px;
+            font-weight: bold;
+            font-size: 25px;
+        }
+        .profile-section  .details-section .top .plus-icon{
+            width: 25px;
+            height: 25px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .profile-section .details-section .top button{
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;;
+        }
+        .profile-section .details-section .noofposts{
+            display: flex;
+            justify-content: space-between;
+            margin-left: -20px;
+        }        
+        .profile-section .details-section .noofposts p{
+            padding-left: 25px;
+        }
+        .profile-section .details-section .bio-section{
+            display: flex;
+            flex-direction: column;
+            padding-left: 5px;
+            height: 60px;
+            font-size: 17px;
+        }
+        .profile-section .details-section .followers-section{
+            color: gray;
+            font-size: 14px;
+        }
+        .highlight-box{
+             display: flex;
+            justify-content: left;
+            align-items: left;
+            position: absolute;
+            width: 600px;
+            top: 250px;
+
+            
+        }
+        .highlights-section{
+            width: 60px;
+            height: 60px;
+            border-radius: 90px;
+            box-shadow: 0px 0px 5px rgb(174, 147, 147);
+            padding: 5px;
+            
+           
+            /* margin-left: -350px;
+            margin-top: -150px; */
+        }
+        .highlights-section img{
+            width: 60px;
+            border-radius: 90px;
+            height: 60px;
+            object-fit: cover;
+        }
+        .highlights-section p{
+            position: absolute;
+            bottom: -40px;
+        }
+        .post-section{
+            display: flex;
+            flex-direction: column;
+            width: 650px;
+            position: absolute;
+            top: 400px;
+            margin-top: -20px;
+            padding: 20px;
+            border-top: 2px solid rgb(225, 165, 165);;
+        }
+        .header-section-private{
+            
+            display: flex;
+            flex-direction: column;
+            width: 650px;
+            position: absolute;
+            top: 400px;
+            margin-top: -120px;
+            padding: 20px;
+            border-top: 2px solid rgb(225, 165, 165);;
+        }
+        .post-section .header-section{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .post-section .header-section .posts,.post-section .header-section .tagged{
+            display: flex;
+            align-items: center;
+            margin-top: -21px;
+        }
+        .post-section .header-section .tagged{
+            padding-left: 30px;
+        }
+        .post-section .header-section .posts{
+            border-top: 2px solid gray;
+        }
+        .post-section .header-section .posts img,.post-section .header-section .tagged img{
+            width: 20px;
+            height: 20px;
+        }
+        .post-section .photos-section{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 50px;
+            font-size: 21px;
+        }
+
+
+
+
+        .header-section-private .header-section{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header-section-private .header-section .posts,.header-section-private .header-section .tagged{
+            display: flex;
+            align-items: center;
+            margin-top: -21px;
+        }
+        .header-section-private .header-section .tagged{
+            padding-left: 30px;
+        }
+        .header-section-private .header-section .posts{
+            border-top: 2px solid gray;
+        }
+        .header-section-private .header-section .posts img,.header-section-private .header-section .tagged img{
+            width: 20px;
+            height: 20px;
+        }
+        .header-section-private .photos-section{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 50px;
+            font-size: 21px;
+        }
+        .follow-btn-portion{
+            background-color: rgba(0, 0, 0,0.4);
+            display: flex;
+            display: none;
+            z-index: 999;
+            border-radius: 19px;
+            flex-direction: column;
+            width: 200px;
+            height: 200px;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            
+        }
+        .added{
+            position: absolute;
+            top: -40px;
+            font-weight: bold;
+            font-size: 18px;
+            display: none;
+        }
+        .follow-btn-portion button{
+            background-color: rgb(22, 22, 226);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            cursor: pointer;   
+        }
+        .follow-btn-portion img{
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+        /* .following-list-box{
+            display: none;
+        } */
+        .following-list-box {
+            position: fixed;
+            top: 100px;
+            right: 50px;
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .following-list{
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0px 0px 5px rgb(0, 0, 0);
+            width: 290px;
+            padding: 20px;
+            z-index: 9999;
+            height: 300px;
+            overflow-y: auto;
+            border-radius: 12px;
+            background-color: aliceblue;
+            position: relative;
+            
+        }
+        .close-box{
+            width:30px;
+            height:30px;
+            border-radius: 50px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+        .close-box .close-icon{
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        .following-list div button{
+            background-color: blue;
+            color: white;
+            padding: 8px 13px;
+            border-radius: 9px;
+            border: none;
+            cursor: pointer;
+            margin-left: 30px;
+            align-items: right;
+        }
+        .following-list div img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            object-fit: cover;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        .following-list div p{
+            font-weight: bold;
+        }
+        .following-list div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            z-index: 999;
+        }
+        .posts{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        .post{
+            padding: 10px;
+        }
+        .post img{
+            width: 200px;
+            height: 350px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        /* .open-post{
+            display: flex;
+            flex-direction: column;
+            background-color: aliceblue;
+            box-shadow: 0px 0px 5px black;
+            padding: 25px;
+            z-index: 44444444;
+            position: relative;
+        } */
+
+        .open-post {
+            position: fixed;
+            top: 50%;                            
+            right: 50px;                            
+            transform: translateY(-50%);         
+            height: auto;                        
+            width: 300px;
+            background-color: aliceblue;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            z-index: 44444444;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            max-height: 90vh;
+            display: none;
+        }
+
+
+        .open-post .open-post-box{
+            
+        }
+        .open-post .close-post{
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            cursor: pointer;
+        }
+        .open-post .left-section img{
+            width: 300px;
+            height: 500px;
+            object-fit: contain;
+            
+        }
+        .open-post .right-section{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 15px;
+        }
+        
+        .open-post .right-section img{
+            width: 50px;
+            height: 50px;
+            border-radius: 60px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .open-post .right-section p{
+            font-size: 20px;
+            margin-left: px;
+            font-weight: bold;
+        }
+        .open-post .right-section .send-option{
+            width: 50px;
+            object-fit: contain;
+            height: 30px;
+            cursor: pointer;
+            
+        }
+        
+        .searchbox input{
+            margin-top: 20px;
+            outline: none;
+            padding: 7px 12px;
+            border: none;
+            box-shadow: 0px 0px 5px black;
+
+        }
+        .searchbox .search-profile{
+            display: flex;
+            align-items: center;
+            justify-content: left;
+
+        }
+        .result{
+            padding-top: 10px;
+        }
+        .searchbox{
+            background-color: rgba(13, 11, 11,0.5);
+            width: 240px;
+            z-index: 13242432;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 100px;
+            bottom: 130px;
+            left: 150px;
+            border-radius: 20px;
+            display: none;
+        }
+        .result{
+            flex: 2;
+        }
+        .searchbox .search-profile img{
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 100px;
+            cursor: pointer;
+        }
+        .searchbox .search-profile p{
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="leftsidebar">
+            <div class="searchbox js-search-box">
+                <input class="js-profile-search-bar" type="text" placeholder="Enter id">
+                <div class="js-result result">
+
+                </div>
+            </div>
+            <div class="topsection">
+                <div class="logobox js-insta-btn"><img class="logos" src="insta website pics/instagram.png"></div>
+            </div>
+            <div class="middlesection">
+                <div class="logobox js-home-btn">
+                    <img class="logos" src="insta website pics/home icon.png">
+                    <p>Home</p>
+                </div>
+                <div class="logobox js-search-btn">
+                    <img class="logos" src="insta website pics/search icon.png">
+                    <p>Search</p>
+                </div>
+                <div class="logobox">
+                    <img class="logos" src="insta website pics/xplore icon.png">
+                    <p>explore</p>
+                </div>
+                <div class="logobox">
+                    <img class="logos" src="insta website pics/reel.png">
+                    <p>reels</p>
+                </div>
+                <div class="js-msg-btn logobox">
+                    
+                    <img class="logos" src="insta website pics/chat.png">
+                    <p>messages</p>
+                </div>
+                <div class="logobox">
+                    <img class="logos" src="insta website pics/heart.png">
+                    <p>notifications</p>
+                </div>
+                <div class="logobox">
+                    <img class="logos" src="insta website pics/plus.png">
+                    <p>create</p>
+                </div>
+                <div class="logobox js-profile-btn">
+                    <img class="logos-dp" src="insta website pics/nani.jpg">
+                    <p>L..K..</p>
+                </div>
+            </div>
+            <div class="bottomsection">
+                <div class="logobox">
+                    <img class="logos" src="insta website pics/thread.png">
+                    <p>Threads</p>
+                </div>
+                <div class="logobox">
+                    <img class="logos" src="insta website pics/menu icon.png">
+                    <p>Menu</p>
+                </div>
+            </div>
+        </div>
+        <div class="rightsidebar">
+            <div class="profile-hightlights-section js-profile-hightlights-section">
+                
+            </div>
+            <div class="highlight-box">
+                <div class="highlights-section js-highlights-section">
+                
+                </div>
+            </div>
+             
+            <div class="post-section js-post-section editing-post">
+               
+            </div>
+            
+            <div class="follow-btn-portion">
+                <img class="js-close-btn" src="insta website pics/close.png">
+                <button class="js-unfollow-btn">Unfollow</button>
+                <button class="js-favourite-btn">Add to favourite list</button>
+                <p class="added">Added &check;</p>
+            </div>
+            <div class="following-list-box">
+                <div class="following-list js-following-list">
+
+                </div>
+            </div>
+            <div class="open-post">
+                
+            </div>
+            
+        </div>
+    </div>
+    <script type="module" src="profile.js">
+        
+    </script>
+</body>
+</html>

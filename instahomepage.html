@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaHomePage</title>
+    <style>
+        body{
+            height: 100vh;
+        }
+        .page{
+            display: flex;
+        }
+        .leftsidebar{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 200px;
+            border-right: 1px solid gray;
+            padding-left: 16px;
+            font-size: 20px;
+            position: relative;
+        }
+        .leftsidebar p{
+            padding-left: 8px;
+        }
+        .logos{
+            width: 25px;
+            height: 25px;
+            transition: width 0.15s,height 0.15s;
+        }
+        .logobox{
+            display: flex;
+            border-radius: 20px;
+            transition: background-color 0.15s;
+            align-items: center;
+            
+        }
+        .logobox img,.logobox p{
+            cursor: pointer;
+        }
+        .logos-dp{
+            width: 30px;
+            height: 30px;
+            border-radius: 30px;
+            object-fit: contain;
+            
+        }
+        .topsection{
+            height: 40px;
+            display: flex;
+            justify-content: left;
+            
+        }
+        .middlesection{
+            height: 430px;
+            display: flex;
+            justify-content: space-between;
+            align-items:left;
+        }
+        .bottomsection{
+            display: flex;
+            justify-content: space-between;
+            align-items: left;
+            height: 120px;
+            margin-top: 30px;
+            
+        }
+        .middlesection,.bottomsection{
+            display: flex;
+            flex-direction: column;
+        }
+        .rightsidebar{
+            flex:1;
+            display: flex;
+            height: 100vh;
+            overflow-y: auto;
+            
+        }
+        .rightsidebar .left{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .rightsidebar .left .stories-section{
+            display: flex;
+            width: 600px;
+            overflow-x: auto;
+            position: absolute;
+            top: 5px;
+            border-radius: 20px 20px 20px 20px;
+            box-shadow: 0px 0px 5px black;
+            scrollbar-width: thin;
+            scrollbar-color: #ccc transparent;
+        }
+        .stories-section::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .stories-section::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 20px;
+        }
+
+        .stories-section::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 20px;
+        }
+
+        .stories-section::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+         .rightsidebar .left .stories-section .story-container {
+            width: auto;
+            height: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .rightsidebar .left .stories-section .story-container img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .rightsidebar .left .stories-section .story-container p {
+            margin-top: 5px;
+            font-size: 14px;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .rightsidebar .right{
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 0px;
+            align-items: center;
+        }
+        .rightsidebar .right .user-profile{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            box-shadow: 0px 0px 5px rgb(37, 42, 47);
+            width: 250px;
+        }
+        .rightsidebar .right .user-profile .user-details{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .rightsidebar .right .user-profile .user-details img{
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            cursor: pointer;
+            object-fit: cover;
+        }
+        .rightsidebar .right .user-profile .user-details p{
+            padding-left: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .rightsidebar .right .user-profile a{
+            color: blue;
+            font-weight: bold;
+            border: none;
+            border-radius: 9px;
+            cursor: pointer;
+        }
+        .rightsidebar .right .follow-suggestion-box{
+            box-shadow: 0px 0px 5px black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 15px 18px;
+            width: 270px;
+            border-radius: 20px;
+        }
+        .suggestion-text{
+            padding: 5px;
+            color: gray;
+            font-size: 17px;
+        }
+        .rightsidebar .right .follow-suggestion-box .profile{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .rightsidebar .right .follow-suggestion-box .profile .user-details{
+            display: flex;
+
+        }
+        .rightsidebar .right .follow-suggestion-box .profile .user-details img{
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .rightsidebar .right .follow-suggestion-box .profile .user-details p{
+            padding-left: 10px;
+            font-size: 19px;
+            cursor: pointer;
+        }
+        .rightsidebar .right .follow-suggestion-box .profile button{
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 9px;
+            padding: 10px 15px;
+        }
+        .posts-section{
+            position: absolute;
+            top: 180px;
+        }
+        .posts-section .post{
+            display: flex;
+            flex-direction: column;
+            width: 460px;
+            box-shadow: 0px 0px 5px black;
+            padding: 10px 15px;
+            margin-bottom: 40px;
+            cursor: pointer;
+        }
+        .posts-section .post .top-section{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 10px;
+        }
+        .posts-section .post .top-section .details{
+            display: flex;
+            align-items: center;
+        }
+        .posts-section .post .top-section .details img{
+            width: 50px;
+            border-radius: 100px;
+            object-fit: cover;
+            height: 50px;
+        }
+        .posts-section .post .top-section .details p{
+            font-size: 20px;
+            padding-left: 10px;
+        }
+        .posts-section .post .top-section .settings-btn{
+            width: 20px;
+            height: 20px;
+        }
+        .posts-section .post .top-section .settings-btn img{
+            width: 100%;
+            height: 100%;
+        }
+        .posts-section .post .middle-section{
+            width: 460px;
+            height: 460px;
+        }
+        .posts-section .post .middle-section img{
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+        }
+        .posts-section .post .bottom-section{
+            display: flex;
+            justify-content: space-between;
+            padding-top: 10px;
+        }
+        .posts-section .post .heart-msg-section{
+            display: flex;
+            width: 100px;
+            justify-content: space-around;
+            
+        }
+        .posts-section .post .heart-msg-section img,
+         .posts-section .post .send-section img
+        {
+            width: 20px;
+            height: 20px;
+            object-fit: cover;
+        }
+        .searchbox{
+            background-color: rgba(13, 11, 11,0.5);
+            width: 240px;
+            z-index: 13242432;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 100px;
+            bottom: 130px;
+            left: 150px;
+            border-radius: 20px;
+            display: none;
+        }
+        .result{
+            flex: 2;
+        }
+        .searchbox input{
+            margin-top: 20px;
+            outline: none;
+            padding: 7px 12px;
+            border: none;
+            box-shadow: 0px 0px 5px black;
+
+        }
+        .searchbox .search-profile{
+            display: flex;
+            align-items: center;
+            justify-content: left;
+
+        }
+        .result{
+            padding-top: 10px;
+        }
+        .searchbox .search-profile img{
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 100px;
+            cursor: pointer;
+        }
+        .searchbox .search-profile p{
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="leftsidebar">
+            <div class="searchbox js-search-box">
+                <input class="js-profile-search-bar" type="text" placeholder="Enter id">
+                <div class="js-result result">
+
+                </div>
+            </div>
+            <div class="topsection">
+                <div class="logobox js-insta-btn"><img class="logos" src="insta website pics/instagram.png"></div>
+            </div>
+            <div class="middlesection">
+                <div class="logobox js-home-btn">
+                    <img class="logos" src="insta website pics/home icon.png">
+                    <p>Home</p>
+                </div>
+                <div class="logobox js-search-btn">
+                    <img class="logos" src="insta website pics/search icon.png">
+                    <p>Search</p>
+                </div>
+                <div class="logobox">
+                    <img class="logos" src="insta website pics/xplore icon.png">
+                    <p>explore</p>
+                </div>
+                <div class="logobox">
+                    <img class="logos" src="insta website pics/reel.png">
+                    <p>reels</p>
+                </div>
+                <div class="logobox js-chat-box">
+                    
+                    <img class="logos" src="insta website pics/chat.png">
+                    <p>messages</p>
+                </div>
+                <div class="logobox">
+                    <img class="logos" src="insta website pics/heart.png">
+                    <p>notifications</p>
+                </div>
+                <div class="logobox">
+                    <img class="logos" src="insta website pics/plus.png">
+                    <p>create</p>
+                </div>
+                <div class="logobox js-profile-btn">
+                    <img class="logos-dp" src="insta website pics/nani.jpg">
+                    <p>L..K..</p>
+                </div>
+            </div>
+            <div class="bottomsection">
+                <div class="logobox">
+                    <img class="logos" src="insta website pics/thread.png">
+                    <p>Threads</p>
+                </div>
+                <div class="logobox">
+                    <img class="logos" src="insta website pics/menu icon.png">
+                    <p>Menu</p>
+                </div>
+            </div>
+        </div>
+        <div class="rightsidebar">
+            <div class="left">
+                <div class="stories-section js-stories-section">
+                    
+                </div>
+                <div class="posts-section js-posts-section">
+                    
+                </div>
+            </div>
+            <div class="right">
+                <div class="user-profile">
+                    <div class="user-details">
+                        <img src="insta website pics/nani.jpg">
+                        <p>L..K..</p>
+                    </div>
+                    <a>Switch</a>
+                </div>
+                <div class="follow-suggestion-box js-follow-suggestion-box">
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="instahomepage.js"></script>
+</body>
+</html>
