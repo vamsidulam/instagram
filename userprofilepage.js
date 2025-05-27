@@ -48,7 +48,7 @@ function searchprofile(){
 function rendersearchprofile(found){
     let img=chatdata[found].profile;
     let name=chatdata[found].name;
-    document.querySelector('.js-result').innerHTML=`
+    document.querySelector('.js-search-result').innerHTML=`
     <div data-index=${found} class="search-profile js-search-profile">
             <img src="${img}">
             <p>${name}</p>
