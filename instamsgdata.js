@@ -215,7 +215,7 @@ export const notedata=[
         song:'insta website pics/The Paradise Theme Ringtone.mp3'
     },
     {
-        note_img:'insta website pics/AA-2.jpg',
+        note_img:'insta website pics/ntr.jpg',
         note_name:'iconstar',
         note_song:'peelings',
         note_singer_name:'DSP',
